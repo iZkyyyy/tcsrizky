@@ -28,12 +28,17 @@
                                     <td>{{$user->akses}}</td>
                                     <td>{{$user->jeniskelamin}}</td>
                                     <td>{{$user->tgllahir}}</td>
-                                    <td><a href="/user/edit/{{$user->id}}"><i class='bx bxs-edit'></i></a><a href="/user/delete/{{$user->id}}"><i class='bx bx-x' ></i></a></td>
+                                    <td><a href="/user/edit/{{$user->id}}"><i class='bx bxs-edit'></i></a>
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-primary"><i class='bx bx-x' ></i></button>
+                                    </form></td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <a href="/user/tambah" class="btn btn-dark">TAMBAH</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-dark">TAMBAH</a>
                     </div>
                 </div>
             </div>

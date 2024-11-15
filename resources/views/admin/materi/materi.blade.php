@@ -12,25 +12,31 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">MICROSOFT OFFICE WORD <a href="/materi/tambah"><i class='bx bx-upload'></i></a></th>
-                                    <th scope="col">MICOSOFT OFFICE EXCEL <a href="/materi/tambah"><i class='bx bx-upload'></i></a></th>
-                                    <th scope="col">MICROSOFT POWERPOINT <a href="/materi/tambah"><i class='bx bx-upload'></i></a></th>
-                                    <th scope="col">SOHO NETWORKING <a href="/materi/tambah"><i class='bx bx-upload'></i></a></th>
+                                    <th scope="col">NO</th>
+                                    <th scope="col">Nama Materi</th>
+                                    <th scope="col">Deskripsi</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($materi as $mtri )
+                                @foreach ($DataMateri as $mtri )
                                 <tr>
                                     <th scope="row">{{$loop ->iteration}}</th>
-                                    <td>{{$mtri ->word}}</td>
-                                    {{-- <td>{{$mtri ->excel}}</td>
-                                    <td>{{$mtri ->powerpoint}}</td>
-                                    <td>{{$mtri ->soho}}</td> --}}
-                                    <td><a href="/materi/edit/{{$mtri->id}}" class="btn btn-success">EDIT</a></td>
-                                    <td><a href="/materi/delete/{{$mtri->id}}" class="btn btn-danger">DELETE</a></td>
+                                    <td>{{$mtri ->namamateri}}</td>
+                                    <td>{{$mtri ->deskripsi}}</td>
+                                    <td class="d-flex">
+                                        <a class="btn btn-primary me-2" href="{{ route('dmateris.edit', $mtri->id) }}"
+                                            role="button">Link</a>
+                                        <form action="{{ route('dmateris.destroy', $mtri->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-primary">Hapus</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <a href="{{ route('dmateris.create') }}" class="btn btn-dark">TAMBAH</a>
                         </table>
                     </div>
                 </div>

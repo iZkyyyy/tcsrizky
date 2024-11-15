@@ -6,14 +6,24 @@
             <div class="card">
                 <div class="card-header">EDIT MATERI</div>
                 <div class="card-body">
-                    <form class="row g-3" action="/materi/update/{{$materi->id}}" method="post" enctype="multipart/form-data">
+                    <form class="row g-3" action="{{ route('dmateris.update', $DataMateri->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         @method('PUT')
-                    @csrf
+                    </form>
                     <div>
-                        <label for="materi" class="form-label">POST MATERI</label>
-                        <input type="file" id="materi" name="materi" class="form-control" value="{{$materi->word}}">
+                        <label for="namamateri" class="form-label">Nama Materi</label>
+                        <input type="file" id="materi" name="materi" placeholder="INPUT MATERI DISINI" class="form-control" value="{{old('materi')}}">
                         <div style="color: red">
                             @error('materi')
+                                {{$message}}
+                            @enderror
+                        </div>
+                    </div>
+                    <div>
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <input type="text" id="deskripsi" name="deskripsi" placeholder="INPUT DESKRIPSI DISINI" class="form-control" value="{{old('deskripsi')}}">
+                        <div style="color: red">
+                            @error('deskripsi')
                                 {{$message}}
                             @enderror
                         </div>

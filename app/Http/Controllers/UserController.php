@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Angkatan;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -21,7 +22,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $angkatan = Angkatan::all();
+        return view('admin.user.create',compact('angkatan'));
     }
 
     /**
@@ -65,14 +67,10 @@ class UserController extends Controller
         $user-> alamat=$request ['alamat'];
         $user-> tgllahir=$request['tgllahir'];
         $user-> foto=$path;
-        $user-> angkatan=$request['angkatan'];
+        $user-> angkatan_id=$request['angkatan_id'];
         $user-> save();
 
-        if($user){
-            return redirect('/user')->with('status', 'Data Telah Ditambahkan');
-        } else{
-            return redirect('/user/tambah')->with('status', 'Data Gagal Ditambahkan');
-        }
+        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan');
     }
 
     /**

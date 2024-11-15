@@ -19,7 +19,7 @@
                 <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/06/pct.png" alt="lkp">
             </div>
             <ul class="nav-links">
-                <li><a href="{{ route('materis.index') }}">Materi</a></li>
+                <li><a href="{{ route('dmateris.index') }}">Materi</a></li>
                 <li><a href="{{ route('kumpuls.index') }}">Kumpul</a></li>
                 <li><a href="{{ route('nilais.index') }}">Nilai</a></li>
                 <li><a href="{{ route('soals.index') }}">Soal</a></li>

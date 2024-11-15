@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('data_materis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('materi_siswa_id');
-            $table->string('filemateri');
+            $table->string('namamateri');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

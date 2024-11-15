@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DataMateri extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'namamateri',
+        'deskripsi',
+    ];
 }

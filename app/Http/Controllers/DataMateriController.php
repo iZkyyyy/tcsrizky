@@ -12,8 +12,8 @@ class DataMateriController extends Controller
      */
     public function index()
     {
-        $dataMateri = DataMateri::all();
-        return view('data-materi.index', compact('dataMateri'));
+        $DataMateri = DataMateri::all();
+        return view('admin.materi.materi', compact('DataMateri'));
     }
 
     /**
@@ -21,7 +21,7 @@ class DataMateriController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.materi.insert');
     }
 
     /**
@@ -29,7 +29,18 @@ class DataMateriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'namamateri' => 'required',
+                'deskripsi' => 'required',
+            ],
+            [
+                'namamateri.required'=>'Nama Kosong',
+                'deskripsi.required'=>'Deskripsi Kosong',
+            ]
+        );
+        DataMateri::create($request->all());
+        return redirect()->route('dmateris.index')->with('success', 'Angkatan berhasil ditambahkan');
     }
 
     /**
@@ -45,7 +56,8 @@ class DataMateriController extends Controller
      */
     public function edit(DataMateri $dataMateri)
     {
-        //
+        $DataMateri= DataMateri::find($dataMateri);
+        return view('admin.materi.edit', compact('DataMateri'));
     }
 
     /**
@@ -53,7 +65,19 @@ class DataMateriController extends Controller
      */
     public function update(Request $request, DataMateri $dataMateri)
     {
-        //
+        $request->validate(
+            [
+                'namamateri' => 'required',
+                'deskripsi' => 'required',
+            ],
+            [
+                'namamateri.required' => 'Nama Kosong',
+                'deskripsi.required' => 'Deskripsi Kosong',
+            ]
+        );
+
+        $dataMateri->update($request->all());
+        return redirect()->route('dmateris.index')->with('success', 'Angkatan berhasil ditambahkan');
     }
 
     /**

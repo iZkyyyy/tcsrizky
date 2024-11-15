@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\MateriSiswaController;
+use App\Http\Controllers\DataMateriController;
 use App\Http\Controllers\AngkatanController;
 use App\Http\Controllers\KumpulSiswaController;
 use App\Http\Controllers\NilaiSiswaController;
@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::resource('users', UserController::class);
 Route::resource('angkatans', AngkatanController::class);
-Route::resource('materis', MateriSiswaController::class);
+Route::resource('dmateris', DataMateriController::class);
 Route::resource('kumpuls', KumpulSiswaController::class);
 Route::resource('nilais', NilaiSiswaController::class);
 Route::resource('soals', SoalSiswaController::class);

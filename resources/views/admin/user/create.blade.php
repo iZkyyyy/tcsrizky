@@ -85,15 +85,20 @@
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" id="foto" name="foto" placeholder="foto" class="form-control" value="{{old('foto')}}">
                       </div>
-                    <div>
-                        <label for="angkatan" class="form-label">Angkatan</label>
-                        <input type="text" id="angkatan" name="angkatan" placeholder="INPUT ANGKATAN ANGGOTA" class="form-control" value="{{old('angkatan')}}">
-                        <div style="color: red">
-                            @error('angkatan')
-                                {{$message}}
+                      <div>
+                        <label for="angkatan_id" class="form-label">Angkatan</label>
+                        <select id="angkatan_id" name="angkatan_id" class="form-control" value="{{old('angkatan_id')}}">
+                         @foreach ($angkatan as $agkt)
+                         <option value="0">Pilih Angkatan</option>
+                         <option value="{{$agkt->id}}">{{$agkt->angkatan}}</option>
+                         @endforeach
+                        </select>
+                        <div style="color:red">
+                            @error('angkatan_id')
+                              {{$message}}
                             @enderror
                         </div>
-                    </div>
+                      </div>
                     <div>
                         <button type="submit" class="btn btn-dark">Save</button>
                       </div>
