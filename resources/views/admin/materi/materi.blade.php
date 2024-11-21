@@ -19,15 +19,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($DataMateri as $mtri )
+                                @foreach ($DataMateri as $item )
                                 <tr>
                                     <th scope="row">{{$loop ->iteration}}</th>
-                                    <td>{{$mtri ->namamateri}}</td>
-                                    <td>{{$mtri ->deskripsi}}</td>
+                                    <td>{{$item ->namamateri}}</td>
+                                    <td>{{$item ->deskripsi}}</td>
                                     <td class="d-flex">
-                                        <a class="btn btn-primary me-2" href="{{ route('dmateris.edit', $mtri->id) }}"
+                                        <a class="btn btn-primary me-2" href="{{ route('dmateris.edit', $item->id) }}"
                                             role="button">Link</a>
-                                        <form action="{{ route('dmateris.destroy', $mtri->id) }}" method="POST">
+                                        <form action="{{ route('dmateris.destroy', $item->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-primary">Hapus</button>

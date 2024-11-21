@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DataMateri;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class DataMateriController extends Controller
 {
@@ -54,16 +56,16 @@ class DataMateriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataMateri $dataMateri)
+    public function edit(string $id)
     {
-        $DataMateri= DataMateri::find($dataMateri);
+        $DataMateri = DataMateri::find($id);
         return view('admin.materi.edit', compact('DataMateri'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DataMateri $dataMateri)
+    public function update(Request $request, string $id)
     {
         $request->validate(
             [
@@ -76,15 +78,22 @@ class DataMateriController extends Controller
             ]
         );
 
-        $dataMateri->update($request->all());
+        $DataMateri = DataMateri::find($id);
+        $DataMateri->update($request->all());
         return redirect()->route('dmateris.index')->with('success', 'Angkatan berhasil ditambahkan');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DataMateri $dataMateri)
+    public function destroy(string $id)
     {
-        //
+        $DataMateri = DataMateri::findOrFail($id);
+        if ($DataMateri->namamateri) {
+            Storage::delete('storage/uploads/' . $DataMateri->namamateri);
+        }
+        $DataMateri->delete();
+
+        return redirect()->route('dmateris.index')->with('success', 'User berhasil Dihapus');
     }
 }

@@ -12,8 +12,8 @@ class AngkatanController extends Controller
      */
     public function index()
     {
-        $angkatan = Angkatan::all();
-        return view('admin.angkatan.angkatan', compact('angkatan'));
+        $Angkatan = Angkatan::all();
+        return view('admin.angkatan.angkatan', compact('Angkatan'));
     }
 
     /**
@@ -51,24 +51,24 @@ class AngkatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Angkatan $angkatan)
+    public function edit(string $id)
     {
-        $angkatan = Angkatan::find($angkatan);
-        return view('admin.angkatan.edit', compact('angkatan'));
+        $Angkatan = Angkatan::find($id);
+        return view('admin.angkatan.edit', compact('Angkatan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Angkatan $angkatan)
+    public function update(Request $request, string $id)
     {
-        $angkatan = Angkatan::find($angkatan);
-        $angkatan -> angkatan=$request['angkatan'];
-        $angkatan -> kodekelas=$request['kodekelas'];
-        $angkatan -> periode=$request['periode'];
-        $angkatan -> mbdate=$request['mbdate'];
-        $angkatan->save();
-        if ($angkatan){
+        $Angkatan = Angkatan::find($id);
+        $Angkatan -> angkatan=$request['angkatan'];
+        $Angkatan -> kodekelas=$request['kodekelas'];
+        $Angkatan -> periode=$request['periode'];
+        $Angkatan -> mbdate=$request['mbdate'];
+        $Angkatan->save();
+        if ($Angkatan){
             return redirect()->route('angkatans.index')->with('success', 'Angkatan berhasil diubah');
         } else {
             return redirect()->routeroute('angkatans.edit', $item->id)->with('error', 'Angkatan gagal diubah');
@@ -79,8 +79,10 @@ class AngkatanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Angkatan $angkatan)
+    public function destroy(string $id)
     {
-        //
+        $Angkatan = Angkatan::destroy($id);
+
+        return redirect()->route('angkatans.index')->with('success', 'User berhasil Dihapus');
     }
 }

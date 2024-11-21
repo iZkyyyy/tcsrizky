@@ -4,13 +4,13 @@
         <div class="card">
             <div class="card-header">Edit ANGKATAN</div>
             <div class="card-body">
-                <form class="row g-3" action="{{ route('angkatans.update', $angkatan->id) }}" method="post" enctype="multipart/form-data">
+                <form class="row g-3" action="{{ route('angkatans.update', $Angkatan->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div>
                         <label for="angkatan" class="form-label">ANGKATAN</label>
                         <input type="string" id="angkatan" name="angkatan" placeholder="INPUT angkatan DISINI"
-                            class="form-control" value="{{ old('angkatan') }}">
+                            class="form-control" value="{{$Angkatan->angkatan}}">
                         <div style="color: red">
                             @error('angkatan')
                                 {{ $message }}
@@ -20,7 +20,7 @@
                     <div>
                         <label for="kodekelas" class="form-label">Kode Kelas</label>
                         <input type="text" id="kodekelas" name="kodekelas" placeholder="INPUT kodekelas DISINI"
-                            class="form-control" value="{{ old('kodekelas') }}">
+                            class="form-control" value="{{ $Angkatan->kodekelas }}">
                         <div style="color: red">
                             @error('kodekelas')
                                 {{ $message }}
@@ -30,7 +30,7 @@
                     <div>
                         <label for="mbdate" class="form-label">Mulai Belajar</label>
                         <input type="date" id="mbdate" name="mbdate" placeholder="INPUT mbdate DISINI"
-                            class="form-control" value="{{ old('mbdate') }}">
+                            class="form-control" value="{{ $Angkatan->mbdate }}">
                         <div style="color: red">
                             @error('mbdate')
                                 {{ $message }}
@@ -39,7 +39,7 @@
                         <div>
                             <label for="periode" class="form-label">Periode</label>
                             <input type="text" id="periode" name="periode" placeholder="INPUT periode DISINI"
-                                class="form-control" value="{{ old('periode') }}">
+                                class="form-control" value="{{ $Angkatan->periode }}">
                             <div style="color: red">
                                 @error('periode')
                                     {{ $message }}
