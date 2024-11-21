@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Angkatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -23,7 +24,7 @@ class UserController extends Controller
     public function create()
     {
         $angkatan = Angkatan::all();
-        return view('admin.user.create',compact('angkatan'));
+        return view('admin.user.create', compact('angkatan'));
     }
 
     /**
@@ -43,10 +44,10 @@ class UserController extends Controller
                 'foto' => 'required|mimes:png,jpg,jpeg,gif|image|max:5048',
             ],
             [
-                'nama.required'=>'Nama Kosong',
-                'email.required'=>'Email Kosong',
-                'password.required'=>'Password Kosong',
-                'jeniskelamin.required'=>'Jenis Kelamin Kosong',
+                'nama.required' => 'Nama Kosong',
+                'email.required' => 'Email Kosong',
+                'password.required' => 'Password Kosong',
+                'jeniskelamin.required' => 'Jenis Kelamin Kosong',
                 'akses.required' => 'Akses Kosong',
                 'alamat.required' => 'Alamat Kosong',
                 'tgllahir.required' => 'Tanggal Lahir Kosong',
@@ -54,21 +55,19 @@ class UserController extends Controller
             ]
         );
 
-        $file = $request->file('foto');
-        $path = $file->storeAs('uploads',time() . '.' . $request->file('foto')->extension());
-
+        $path = $request->file('foto')->store('public/uploads');
 
         $user = new User;
-        $user-> nama=$request ['nama'];
-        $user-> email=$request ['email'];
-        $user-> password=$request ['password'];
-        $user-> jeniskelamin=$request ['jeniskelamin'];
-        $user-> akses=$request ['akses'];
-        $user-> alamat=$request ['alamat'];
-        $user-> tgllahir=$request['tgllahir'];
-        $user-> foto=$path;
-        $user-> angkatan_id=$request['angkatan_id'];
-        $user-> save();
+        $user->nama = $request['nama'];
+        $user->email = $request['email'];
+        $user->password = $request['password'];
+        $user->jeniskelamin = $request['jeniskelamin'];
+        $user->akses = $request['akses'];
+        $user->alamat = $request['alamat'];
+        $user->tgllahir = $request['tgllahir'];
+        $user->foto = basename($path);
+        $user->angkatan_id = $request['angkatan_id'];
+        $user->save();
 
         return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan');
     }
@@ -86,8 +85,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user= User::find($id);
-        return view('admin.user.edit', compact('user'));
+        $user = User::find($id);
+        $angkatan = Angkatan::all();
+        return view('admin.user.edit', compact('user', 'angkatan'));
     }
 
     /**
@@ -98,19 +98,17 @@ class UserController extends Controller
         $request->validate(
             [
                 'nama' => 'required',
-                'email' => 'required | unique:users',
-                'password' => 'required',
+                'email' => 'required',
                 'jeniskelamin' => 'required',
                 'akses' => 'required',
                 'alamat' => 'required',
                 'tgllahir' => 'required',
-                'foto' => 'required|mimes:png,jpg,jpeg,gif|image|max:5048',
+                'foto' => 'mimes:png,jpg,jpeg,gif|image|max:5048',
             ],
             [
-                'nama.required'=>'Nama Kosong',
-                'email.required'=>'Email Kosong',
-                'password.required'=>'Password Kosong',
-                'jeniskelamin.required'=>'Jenis Kelamin Kosong',
+                'nama.required' => 'Nama Kosong',
+                'email.required' => 'Email Kosong',
+                'jeniskelamin.required' => 'Jenis Kelamin Kosong',
                 'akses.required' => 'Akses Kosong',
                 'alamat.required' => 'Alamat Kosong',
                 'tgllahir.required' => 'Tanggal Lahir Kosong',
@@ -118,23 +116,27 @@ class UserController extends Controller
             ]
         );
 
-        $file = $request->file('foto');
-        $path = $file->storeAs('uploads',time() . '.' . $request->file('foto')->extension());
-
+        if ($request->foto) {
+            if ($request->foto_lama) {
+                Storage::delete($request->foto_lama);
+            }
+            $path = $request->file('foto')->store('public/uploads');
+        } else {
+            $path = $request->foto_lama;
+        }
 
         $user = User::find($id);
-        $user-> nama=$request ['nama'];
-        $user-> email=$request ['email'];
-        $user-> password=$request ['password'];
-        $user-> jeniskelamin=$request ['jeniskelamin'];
-        $user-> akses=$request ['akses'];
-        $user-> alamat=$request ['alamat'];
-        $user-> tgllahir=['tgllahir'];
-        $user-> foto=$path;
-        $user-> angkatan=$request['angkatan'];
-        $user-> save();
+        $user->nama = $request['nama'];
+        $user->email = $request['email'];
+        $user->jeniskelamin = $request['jeniskelamin'];
+        $user->akses = $request['akses'];
+        $user->alamat = $request['alamat'];
+        $user->tgllahir = $request['tgllahir'];
+        $user->foto = basename($path);
+        $user->angkatan_id = $request['angkatan_id'];
+        $user->save();
 
-        return redirect('/user');
+        return redirect()->route('users.index')->with('success', 'User berhasil Diupdate');
     }
 
     /**
@@ -142,7 +144,12 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        User::destroy('id',$id);
-        return redirect('/user');
+        $user = User::findOrFail($id);
+        if ($user->foto) {
+            Storage::delete('storage/uploads/' . $user->foto);
+        }
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User berhasil Dihapus');
     }
 }

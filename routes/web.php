@@ -19,10 +19,6 @@ use App\Http\Controllers\SoalSiswaController;
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
-
 Route::resource('users', UserController::class);
 Route::resource('angkatans', AngkatanController::class);
 Route::resource('dmateris', DataMateriController::class);
