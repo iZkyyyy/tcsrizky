@@ -23,9 +23,6 @@
             </div>
             <ul class="nav-links">
                 <li><a href="{{ route('dmateris.index') }}">Materi</a></li>
-                <li><a href="{{ route('kumpuls.index') }}">Kumpul</a></li>
-                <li><a href="{{ route('nilais.index') }}">Nilai</a></li>
-                <li><a href="{{ route('soals.index') }}">Soal</a></li>
                 {{-- <li><a href="{{ route('absens.index') }}">Absen</a></li> --}}
                 <li><a href="{{ route('users.index') }}">User</a></li>
                 <li><a href="{{ route('angkatans.index') }}">Angkatan</a></li>
