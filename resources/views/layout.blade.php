@@ -290,9 +290,7 @@
                         <li><a href="/sako">PalComTech Sako</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('materis.index') }}">Materi</a></li>
-                <li><a href="{{ route('kumpuls.index') }}">Kumpul</a></li>
-                <li><a href="{{ route('nilais.index') }}">Nilai</a></li>
+                <li><a href="{{ route('dmateris.index') }}">Materi</a></li>
                 <li><a href="{{ route('soals.index') }}">Soal</a></li>
                 {{-- <li><a href="{{ route('absens.index') }}">Absen</a></li> --}}
                 <li><a href="{{ route('users.index') }}">User</a></li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataMateri;
 use App\Models\SoalSiswa;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class SoalSiswaController extends Controller
      */
     public function create()
     {
-        return view('admin.soal.insert');
+        $DataMateri = DataMateri::all();
+        return view('admin.soal.insert', compact('DataMateri'));
     }
 
     /**
@@ -29,15 +31,18 @@ class SoalSiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $Soalsiswa = new SoalSiswa();
-        $Soalsiswa->soal=$request ['soal'];
-        $Soalsiswa -> save();
+        $request->validate([
+            'materi_siswa_id' =>'required',
+            'kisikisi'=>'required',
+        ]);
 
-        if($Soalsiswa){
-            return redirect('/soal')->with('status', 'Data Telah ditambahkan');
-        } else {
-            return redirect('/tambah1')->with('status', 'Data Gagal Ditambahkan');
-        }
+        $Soalsiswa = new SoalSiswa;
+        $Soalsiswa->materi_siswa_id = $request['materi_siswa_id'];
+        $Soalsiswa->kisikisi = $request['kisikisi'];
+        $Soalsiswa->save();
+
+        return redirect()->route('soals.index')->with('success', 'User berhasil ditambahkan');
+
     }
 
     /**
@@ -51,10 +56,11 @@ class SoalSiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SoalSiswa $soalSiswa)
+    public function edit(string $id)
     {
         $Soalsiswa = SoalSiswa::find($id);
-        return view('admin.soal.edit', compact('soalSiswa'));
+        $DataMateri = DataMateri::all();
+        return view('admin.soal.edit', compact('Soalsiswa', 'DataMateri'));
     }
 
     /**
@@ -63,18 +69,19 @@ class SoalSiswaController extends Controller
     public function update(Request $request, SoalSiswa $soalSiswa)
     {
         $Soalsiswa = SoalSiswa::find($id);
-        $Soalsiswa->soal=$request ['soal'];
+        $Soalsiswa->materi_siswa_id=$request ['materi_siswa_id'];
+        $Soalsiswa->kisikisi=$request ['kisikisi'];
         $Soalsiswa -> save();
 
-        return redirect('/soal');
+        return redirect()->route('soals.index')->with('success', 'User berhasil Diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SoalSiswa $soalSiswa)
+    public function destroy(string $id)
     {
-        SoalSiswa::destroy($id);
-        return redirect('/soal');
+        $Soalsiswa = SoalSiswa::destroy($id);
+        return redirect()->route('soals.index')->with('success', 'User berhasil Dihapus');
     }
 }

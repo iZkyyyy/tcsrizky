@@ -22,6 +22,7 @@
                 <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/06/pct.png" alt="lkp">
             </div>
             <ul class="nav-links">
+                <li><a href="{{ route('soals.index') }}">Soal</a></li>
                 <li><a href="{{ route('dmateris.index') }}">Materi</a></li>
                 {{-- <li><a href="{{ route('absens.index') }}">Absen</a></li> --}}
                 <li><a href="{{ route('users.index') }}">User</a></li>
