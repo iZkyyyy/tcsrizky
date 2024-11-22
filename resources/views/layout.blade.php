@@ -163,53 +163,8 @@
         font-family: arial ;
         color: #FFFFFF;
         text-align: justify;
-        font-size: 12px;
+        font-size: 18px;
         justify-content: center;
-    }
-    .prestasi {
-        background-color: white;
-    }
-    .prestasi h2{
-        padding: 7px;
-        font-family: sans-serif;
-        color: #000000;
-        text-align: center;
-        font-size: 22px;
-    }
-    .container-gallery {
-        padding: 6%;
-        width: 100%;
-        max-width: 1000px;
-        height: 500px;
-        display: flex;
-        align-items: stretch;
-        gap: 1.25rem;
-        transition: all 400ms;
-        border-radius: 8px;
-    }
-    .card{
-        flex: 1;
-        height: 100%;
-        transition: all 400ms;
-        cursor: pointer;
-        border-radius: 8px;
-    }
-
-    .card :nth-child(odd) {
-        translate: 0 -20px;
-        border-radius: 15px;
-
-    }
-    .card :nth-child(even) {
-        translate: 0 20px;
-        border-radius: 15px;
-
-    }
-    .container:hover > .card:not(:hover){
-        filter: grayscale(100%);
-    }
-    .card:hover{
-        flex: 3;
     }
     footer{
         background-color: #1a1ab5;
@@ -247,19 +202,42 @@
         font-weight: 400;
         margin: 0px 5px;
     }
-    .marquee {
-    width: 100%;
-    background-color: orange;
-    color: white;
-    padding: 5px 0;
-    text-align: center;
-    font-size: 18px;
-    animation: marquee 10s linear infinite;
-    border-radius: 50px;
+    .gallery{
+        width: 600px;
+        display: flex;
+        overflow-x: scroll;
     }
-    @keyframes marquee {
-    0% {transform: translateX(100%);}
-    100% {transform: translateX(-100%);}
+    .gallery div{
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 20px;
+        flex: none;
+    }
+
+    .gallery div img{
+        width: 100%;
+        filter: grayscale(100%);
+        transition: transform 0.5s;
+    }
+    .gallery::-webkit-scrollbar {
+        display: none;
+    }
+    .gallery-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10%
+    }
+    #backBtn, #nextBtn{
+        width: 50px;
+        cursor: pointer;
+        margin: 40px;
+    }
+    .gallery div img:hover{
+        filter: grayscale(0);
+        cursor: pointer;
+        transform: (1.1);
     }
     </style>
 </head>
@@ -304,7 +282,6 @@
         </nav>
     </header>
     <div>
-        <div class="marquee">ADA PROMO 25% UNTUK SETIAP PROFESIONAL 1 TAHUN</div>
         <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/terbaik-lkp-1.png" alt="Gambar contoh" width="100%">
         <div class="img-container">
             <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/07/unggulan-100.png" alt="Gambar contoh" width="15%">
@@ -314,59 +291,47 @@
         </div>
         <div class="desc">
             <h2>Tentang LKP PalComTech</h2>
-            <p>LKP PalComTech menjadi Lembaga kursus Terbaik Tingkat Nasional yang telah Terakreditasi dan Berkinerja dengan Mutu “A”. Ini menjadi bukti bahwa LKP PalComTech memiliki kredibilitas yang tinggi dan telah memenuhi standar kualitas dan mutu yang telah ditetapkan oleh pemerintah. LKP PalComTech juga memiliki reputasi yang baik dimasyarakat. Hal ini dibuktikan dengan banyaknya alumni LKP PalComTech yang berhasil mendapatkan pekerjaan yang sesuai dengan bidang ilmunya diberbagai industri. LKP PalComTech memiliki kurikulum dan materi yang sesuai dengan kebutuhan Dunia Industri Dunia Usaha dan Dunia Kerja, didukung oleh Tenaga pengajar yang profesional, konsep belajar Active Learning, 100% praktek 100% internet, fasilitas dan sarana belajar yang kekinian, ini membuat daya tangkap belajar siswa 3x lipat lebih cepat dan merasa nyaman saat belajar.
-            </p>
+            <p>LKP PalComTech menjadi Lembaga kursus Terbaik Tingkat Nasional yang telah Terakreditasi dan Berkinerja dengan Mutu “A”. Ini menjadi bukti bahwa LKP PalComTech memiliki kredibilitas yang tinggi dan telah memenuhi standar kualitas dan mutu yang telah ditetapkan oleh pemerintah. LKP PalComTech juga memiliki reputasi yang baik dimasyarakat. Hal ini dibuktikan dengan banyaknya alumni LKP PalComTech yang berhasil mendapatkan pekerjaan yang sesuai dengan bidang ilmunya diberbagai industri. LKP PalComTech memiliki kurikulum dan materi yang sesuai dengan kebutuhan Dunia Industri Dunia Usaha dan Dunia Kerja, didukung oleh Tenaga pengajar yang profesional, konsep belajar Active Learning, 100% praktek 100% internet, fasilitas dan sarana belajar yang kekinian, ini membuat daya tangkap belajar siswa 3x lipat lebih cepat dan merasa nyaman saat belajar.</p>
         </div>
-        <div class="prestasi">
-            <h2>Prestasi LKP PalComTech</h2>
-            <div class="prestasi-container">
-                <div class="container-gallery">
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0014-150x150.jpg" alt="prestasi" width="100%">
+        <div class="gallery-wrap">
+            <img src="https://cdn-icons-png.freepik.com/512/93/93634.png" id="backBtn">
+            <div class="gallery">
+                <div>
+                    <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0014-150x150.jpg"></span>
+                    <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0031-150x150.jpg"></span>
+                    <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0015-150x150.jpg"></span>
+                </div>
+                    <div>
+                        <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0016-150x150.jpg"></span>
+                        <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0017-150x150.jpg"></span>
+                        <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0027-150x150.jpg"></span>
                     </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0031-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0015-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0016-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0017-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0027-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0028-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0013-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0029-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0030-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0014-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0031-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
-                    <div class="card">
-                        <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0015-150x150.jpg" alt="Gambar contoh" width="100%">
-                    </div>
+                    <div>
+                    <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0028-150x150.jpg"></span>
+                    <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0013-150x150.jpg"></span>
+                    <span><img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/08/IMG-20240801-WA0029-150x150.jpg"></span>
                 </div>
             </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/7604/7604747.png" id="nextBtn">
         </div>
         <footer>
-            <div class="footer-img">
-            <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/06/pctlogo.png" alt="palcomtechlogo">
-            </div>
+            <img src="https://kursus.palcomtech.ac.id/wp-content/uploads/2024/06/pctlogo.png" alt="palcomtechlogo" width="200px">
         </footer>
+        <script>
+            let scrollContainer = document.querySelector('.gallery');
+            let backBtn = document.getElementById('backBtn');
+            let nextBtn = document.getElementById('nextBtn');
+
+            scrollContainer.addEventListener('wheel', (evt) =>{
+                evt.preventDefault();
+                scrollContainer.scrollLeft += evt.deltaY;
+            });
+            nextBtn.addEventListener('click', () =>{
+                scrollContainer.scrollLeft += 900;
+            })
+            backBtn.addEventListener('click', () =>{
+                scrollContainer.scrollLeft -= 900;
+            })
+        </script>
     </body>
 </html>
