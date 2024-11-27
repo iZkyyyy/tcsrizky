@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">UPLOAD DATA</div>
+                    <div class="card-header">EDIT DATA</div>
                     <div class="card-body">
                         <form class="row g-3" action="{{ route('users.update', $user->id) }}" method="post"
                             enctype="multipart/form-data">
