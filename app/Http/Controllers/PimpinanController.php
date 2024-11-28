@@ -14,7 +14,7 @@ class PimpinanController extends Controller
      */
     public function index()
     {
-        return view('layout.pimpinan');
+        return view('layout.instruktur');
     }
 
     /**
