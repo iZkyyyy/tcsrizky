@@ -13,4 +13,7 @@ class SoalSiswa extends Model
         'materi_siswa_id',
         'kisikisi',
     ];
+    public function data_materi(){
+        return $this->belongsTo(DataMateri::class);
+    }
 }

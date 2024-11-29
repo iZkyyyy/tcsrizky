@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('soal_siswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('materi_siswa_id');
+            $table->foreignId('data_materi_id');
             $table->text('kisikisi');
             $table->timestamps();
         });

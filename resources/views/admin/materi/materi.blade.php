@@ -13,6 +13,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">File</th>
                                     <th scope="col">Nama Materi</th>
                                     <th scope="col">Deskripsi</th>
                                     <th scope="col">Action</th>
@@ -22,6 +23,7 @@
                                 @foreach ($DataMateri as $item )
                                 <tr>
                                     <th scope="row">{{$loop ->iteration}}</th>
+                                    <td>{{$item ->file}}</td>
                                     <td>{{$item ->namamateri}}</td>
                                     <td>{{$item ->deskripsi}}</td>
                                     <td class="d-flex">

@@ -33,10 +33,12 @@ class DataMateriController extends Controller
     {
         $request->validate(
             [
+                'file' => 'required',
                 'namamateri' => 'required',
                 'deskripsi' => 'required',
             ],
             [
+                'file.required'=>'file Kosong',
                 'namamateri.required'=>'Nama Kosong',
                 'deskripsi.required'=>'Deskripsi Kosong',
             ]
@@ -69,10 +71,12 @@ class DataMateriController extends Controller
     {
         $request->validate(
             [
+                'file' => 'required',
                 'namamateri' => 'required',
                 'deskripsi' => 'required',
             ],
             [
+                'file.required' => 'file Kosong',
                 'namamateri.required' => 'Nama Kosong',
                 'deskripsi.required' => 'Deskripsi Kosong',
             ]

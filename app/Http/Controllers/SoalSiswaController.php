@@ -37,7 +37,7 @@ class SoalSiswaController extends Controller
         ]);
 
         $Soalsiswa = new SoalSiswa;
-        $Soalsiswa->materi_siswa_id = $request['materi_siswa_id'];
+        $Soalsiswa->data_materi_id = $request['materi_siswa_id'];
         $Soalsiswa->kisikisi = $request['kisikisi'];
         $Soalsiswa->save();
 
@@ -66,10 +66,10 @@ class SoalSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SoalSiswa $soalSiswa)
+    public function update(Request $request, string $id)
     {
         $Soalsiswa = SoalSiswa::find($id);
-        $Soalsiswa->materi_siswa_id=$request ['materi_siswa_id'];
+        $Soalsiswa->data_materi_id=$request ['materi_siswa_id'];
         $Soalsiswa->kisikisi=$request ['kisikisi'];
         $Soalsiswa -> save();
 

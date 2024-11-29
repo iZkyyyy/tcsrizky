@@ -25,16 +25,15 @@
                             @else
                                 <input type="hidden" name="materi_siswa_id" value="{{ $Soalsiswa->materi_siswa_id }}">
                             @endif
-                        <div>
-                            <label for="kisikisi" class="form-label">Kisi-Kisi</label>
-                            <input type="text" id="kisikisi" name="kisikisi" placeholder="INPUT Kisi-Kisi DISINI"
-                                class="form-control" value="{{$Soalsiswa->kisikisi}}">
-                            <div style="color: red">
-                                @error('kisikisi')
-                                    {{ $message }}
-                                @enderror
+                            <div>
+                                <label for="kisikisi" class="form-label">Kisi Kisi</label>
+                                    <textarea name="kisikisi"  id="kisikisi" cols="30" rows="10" class="form-control" value="{{ old('kisikisi') }}"></textarea>
+                                <div style="color: red">
+                                    @error('kisikisi')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-dark">Save</button>

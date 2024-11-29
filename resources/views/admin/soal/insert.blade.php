@@ -22,8 +22,7 @@
                       </div>
                         <div>
                             <label for="kisikisi" class="form-label">Kisi Kisi</label>
-                            <input type="text" id="kisikisi" name="kisikisi" placeholder="INPUT kisikisi DISINI"
-                                class="form-control" value="{{ old('kisikisi') }}">
+                                <textarea name="kisikisi"  id="kisikisi" cols="30" rows="10" class="form-control" value="{{ old('kisikisi') }}"></textarea>
                             <div style="color: red">
                                 @error('kisikisi')
                                     {{ $message }}

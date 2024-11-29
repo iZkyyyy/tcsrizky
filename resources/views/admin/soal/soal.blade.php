@@ -21,7 +21,7 @@
                                     @foreach ($Soalsiswa as $item)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $item->materi_siswa_id }}</td>
+                                            <td>{{ $item->data_materi->namamateri }}</td>
                                             <td>{{ $item->kisikisi }}</td>
                                             <td class="d-flex">
                                                 <a class="btn btn-primary me-2" href="{{ route('soals.edit', $item->id) }}"

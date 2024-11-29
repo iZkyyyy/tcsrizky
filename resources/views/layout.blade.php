@@ -217,7 +217,6 @@
 
     .gallery div img{
         width: 100%;
-        filter: grayscale(100%);
         transition: transform 0.5s;
     }
     .gallery::-webkit-scrollbar {
@@ -235,7 +234,6 @@
         margin: 40px;
     }
     .gallery div img:hover{
-        filter: grayscale(0);
         cursor: pointer;
         transform: (1.1);
     }

@@ -10,8 +10,17 @@
                     @method('PUT')
                     @csrf
                     <div>
+                        <label for="file" class="form-label">File</label>
+                        <input type="file" id="file" name="file" placeholder="INPUT MATERI DISINI" class="form-control" value="{{$DataMateri->file}}">
+                        <div style="color: red">
+                            @error('file')
+                                {{$message}}
+                            @enderror
+                        </div>
+                    </div>
+                    <div>
                         <label for="namamateri" class="form-label">Nama Materi</label>
-                        <input type="file" id="namamateri" name="namamateri" placeholder="INPUT MATERI DISINI" class="form-control" value="{{$DataMateri->namamateri}}">
+                        <input type="text" id="namamateri" name="namamateri" placeholder="INPUT namamateri DISINI" class="form-control" value="{{$DataMateri->namamateri}}">
                         <div style="color: red">
                             @error('namamateri')
                                 {{$message}}

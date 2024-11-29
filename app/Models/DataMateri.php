@@ -9,6 +9,7 @@ class DataMateri extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'file',
         'namamateri',
         'deskripsi',
     ];

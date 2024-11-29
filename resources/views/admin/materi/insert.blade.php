@@ -9,8 +9,17 @@
                     <form class="row g-3" action="{{ route('dmateris.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div>
+                        <label for="file" class="form-label">File</label>
+                        <input type="file" id="file" name="file" placeholder="INPUT MATERI DISINI" class="form-control" value="{{old('file')}}">
+                        <div style="color: red">
+                            @error('file')
+                                {{$message}}
+                            @enderror
+                        </div>
+                    </div>
+                    <div>
                         <label for="namamateri" class="form-label">Nama Materi</label>
-                        <input type="file" id="namamateri" name="namamateri" placeholder="INPUT MATERI DISINI" class="form-control" value="{{old('namamateri')}}">
+                        <input type="text" id="namamateri" name="namamateri" placeholder="INPUT Nama Materi DISINI" class="form-control" value="{{old('namamateri')}}">
                         <div style="color: red">
                             @error('namamateri')
                                 {{$message}}
