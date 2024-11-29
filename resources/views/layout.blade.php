@@ -268,11 +268,6 @@
                         <li><a href="/sako">PalComTech Sako</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('dmateris.index') }}">Materi</a></li>
-                <li><a href="{{ route('soals.index') }}">Soal</a></li>
-                {{-- <li><a href="{{ route('absens.index') }}">Absen</a></li> --}}
-                <li><a href="{{ route('users.index') }}">User</a></li>
-                <li><a href="{{ route('angkatans.index') }}">Angkatan</a></li>
             </ul>
             <div class="burger">
                 <div class="line1"></div>
