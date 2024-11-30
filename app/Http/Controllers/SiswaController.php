@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\SoalSiswa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -13,7 +14,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        return view('layout.instruktur');
+        $Soalsiswa= SoalSiswa::all();
+        return view('layout.siswa', compact('Soalsiswa'));
     }
 
     /**

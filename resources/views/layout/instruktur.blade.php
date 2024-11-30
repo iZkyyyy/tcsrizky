@@ -26,6 +26,7 @@
                 <li><a href="{{ route('dmateris.index') }}">Materi</a></li>
                 <li><a href="{{ route('users.index') }}">User</a></li>
                 <li><a href="{{ route('angkatans.index') }}">Angkatan</a></li>
+                <li><a href="/siswa">Siswa</a></li>
             </ul>
             </ul>
         </nav>
