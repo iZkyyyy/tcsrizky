@@ -1,0 +1,366 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+@media(max-width: 577px) {
+    .header-sicial-icon {
+        display: none;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+nav .navbar-brand {
+    color: #fd7e14 !important;
+
+}
+
+.navbar-nav .navbar-link {
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.navbar-toggler {
+    outline: none !important;
+    padding: none !important;
+}
+/* hero css */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-image: url(galeri/desktop3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero .content {
+    padding: 1rem 7%;
+    max-width: 60%;
+}
+
+.hero .content h1 {
+    font-size: 5rem;
+    color: white;
+    text-shadow: 5px 5px 5px blue;
+    line-height: 1;
+}
+
+.hero .content p {
+    font-size: 1.6rem;
+    margin-top: 0.5rem;
+    color: white;
+}
+
+.hero-img img{
+    width: 30vw;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+/* css about */
+
+.about h2,
+.program h2,
+.kontak h2,
+.galeri h2, #staff h2{
+    padding-top: 4rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#staff h2{
+    margin-bottom: -5rem;
+}
+
+.about .row .about-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: blue;
+}
+
+.about .row .about-content p {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+    color: rgba(202, 74, 0, 0.788);
+}
+
+/* css Program */
+.program h2 {
+    margin-bottom: 4rem;
+}
+
+.program-container .program-box{
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #191f36;
+    overflow: hidden;
+    display: flex;
+    margin: 4px 0 4px 0;
+}
+
+.program-box img{
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0.7;
+
+}
+
+.program-box:hover img{
+    transform: scale(1.1);
+}
+
+.program-box .program-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.2), #5982F4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+
+.program-box:hover .program-layer {
+    transform: translateY(0);
+}
+
+.program-layer h4 {
+    font-size: 2.5rem;
+    color: #f6f6f8;
+}
+
+.program-layer p {
+    font-size: 1.2rem;
+    margin: .3s 0 1rem;
+    color: #f6f6f8;
+}
+
+.program-layer i{
+    font-size: 2rem;
+    color: #f6f6f8;
+}
+
+/* css galeri */
+.galeri{
+    padding: 3rem 3%;
+}
+
+.galeri .row {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.galeri .row .galeri-card {
+    text-align: center;
+    width: 400px;
+    border-radius: 2rem 0 2rem 0;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.galeri .row .galeri-card img {
+    border-radius: 5px;
+    width: 100%;
+}
+
+.galeri .row .galeri-card img:hover {
+    background: transparent;
+    color: blue;
+    box-shadow: 0 0 20px blue;
+    cursor: pointer;
+}
+
+.galeri .row .galeri-text {
+    font-size: 1.3rem;
+    margin-top: 0.4rem;
+    margin-bottom: 2rem;
+    color: blue;
+}
+
+.galeri .row .btn {
+    background-color: rgb(202, 74, 0);
+    padding: 0.8rem 3rem;
+    border-radius: 1rem 0 1rem 0;
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 600;
+}
+
+.galeri .row .btn:hover {
+    background: transparent;
+    color: blue;
+    box-shadow: 0 0 20px blue;
+    cursor: pointer;
+}
+
+/* css footer */
+
+footer{
+    background-color:#4439be;
+    border: 2px ;
+}
+
+footer .row{
+    display: flex;
+    padding: 1.4rem 7%;
+    justify-content: space-between;
+}
+
+footer .row .sosialmedia a{
+    display: block;
+    color:white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+footer .credit{
+    background-color:white;
+    padding: 1.5rem 7%;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+footer .credit a{
+    color:blue;
+}
+
+.login{
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.gallery div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 15px;
+    flex: none;
+}
+
+.gallery div img {
+    width: 100%;
+    transition: transform 0.5s;
+}
+
+.gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10%;
+}
+
+#backBtn,
+#nextBtn {
+    width: 50px;
+    cursor: pointer;
+    margin: 40px;
+}
+
+.gallery div img:hover {
+    cursor: pointer;
+    transform: (1.1);
+}
+/* media query */
+/* media tablet */
+@media (max-width: 768px) {
+    html{
+        font-size: 70%;
+        }
+
+        .hero .content h1{
+            font-size: 7rem;
+            line-height: 1;
+        }
+
+        .hero .content p {
+            font-size: 3rem;
+        }
+
+        .hero-image{
+            width: 100;
+        }
+
+        .program-layer p {
+            font-size: 2rem;
+        }
+
+        .program-layer h4 {
+            font-size: 3rem;
+        }
+
+        .galeri .row .galeri-card {
+            text-align: center;
+            width: 650px;
+            border-radius: 2rem 0 2rem 0;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 10px;
+        }
+    }
+@media (min-width: 768px) {
+    .gallery div {
+        width: 100%;
+    }
+    }
+
+    /* media hp/handphone */
+    @media (max-width: 576px) {
+        html{
+            font-size: 55%;
+        }
+
+        .hero .content h1{
+            font-size: 6rem;
+            line-height: 1;
+        }
+
+        .hero .content p {
+            font-size: 2rem;
+        }
+
+       .about .row, .kontak .row, footer .row{
+            flex-wrap: wrap;
+        }
+
+       .kontak .row img{
+           width: 100%;
+        }
+
+       footer .row .maps{
+          order: -1;
+          margin-bottom: 3rem;
+          margin: 1rem;
+       }
+
+       #backBtn,
+       #nextBtn {
+           width: 10px;
+           cursor: pointer;
+           margin: 10px;
+       }
+    }
+

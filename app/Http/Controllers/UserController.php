@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Angkatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -60,7 +65,7 @@ class UserController extends Controller
         $user = new User;
         $user->nama = $request['nama'];
         $user->email = $request['email'];
-        $user->password = $request['password'];
+        $user->password = Hash::make($request->password);
         $user->jeniskelamin = $request['jeniskelamin'];
         $user->akses = $request['akses'];
         $user->alamat = $request['alamat'];
@@ -112,11 +117,10 @@ class UserController extends Controller
                 'akses.required' => 'Akses Kosong',
                 'alamat.required' => 'Alamat Kosong',
                 'tgllahir.required' => 'Tanggal Lahir Kosong',
-                'foto.required' => 'Foto Kosong',
             ]
         );
 
-        if ($request->foto) {
+        if ($request->file('foto')) {
             if ($request->foto_lama) {
                 Storage::delete($request->foto_lama);
             }

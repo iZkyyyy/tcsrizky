@@ -1,4 +1,7 @@
-@extends('layout.instruktur')
+@extends('layout.app')
+@section('title')
+ User
+@endsection
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -34,14 +37,15 @@
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-primary"><i class='bx bxs-trash'></i></button>
+                                                    <button type="submit" class="btn btn-primary"><i
+                                                            class='bx bxs-trash'></i></button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            <a href="{{ route('users.create') }}" class="btn btn-dark"><i class='bx bx-plus' ></i></a>
+                            <a href="{{ route('users.create') }}" class="btn btn-dark"><i class='bx bx-plus'></i></a>
                         </div>
                     </div>
                 </div>

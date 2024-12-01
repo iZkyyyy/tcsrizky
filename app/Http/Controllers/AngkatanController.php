@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class AngkatanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -30,10 +34,10 @@ class AngkatanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'angkatan' =>'required|max:4',
-        'kodekelas'=>'required|unique:angkatans',
-        'periode'=>'required',
-        'mbdate'=>'required',
+            'angkatan' => 'required|max:4',
+            'kodekelas' => 'required|unique:angkatans',
+            'periode' => 'required',
+            'mbdate' => 'required',
         ]);
 
         Angkatan::create($request->all());
@@ -63,17 +67,16 @@ class AngkatanController extends Controller
     public function update(Request $request, string $id)
     {
         $Angkatan = Angkatan::find($id);
-        $Angkatan -> angkatan=$request['angkatan'];
-        $Angkatan -> kodekelas=$request['kodekelas'];
-        $Angkatan -> periode=$request['periode'];
-        $Angkatan -> mbdate=$request['mbdate'];
+        $Angkatan->angkatan = $request['angkatan'];
+        $Angkatan->kodekelas = $request['kodekelas'];
+        $Angkatan->periode = $request['periode'];
+        $Angkatan->mbdate = $request['mbdate'];
         $Angkatan->save();
-        if ($Angkatan){
+        if ($Angkatan) {
             return redirect()->route('angkatans.index')->with('success', 'Angkatan berhasil diubah');
         } else {
-            return redirect()->routeroute('angkatans.edit', $item->id)->with('error', 'Angkatan gagal diubah');
+            return redirect()->routeroute('angkatans.edit', $Angkatan->id)->with('error', 'Angkatan gagal diubah');
         }
-
     }
 
     /**

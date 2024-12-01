@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class DataMateriController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -38,21 +42,30 @@ class DataMateriController extends Controller
                 'deskripsi' => 'required',
             ],
             [
-                'file.required'=>'file Kosong',
-                'namamateri.required'=>'Nama Kosong',
-                'deskripsi.required'=>'Deskripsi Kosong',
+                'file.required' => 'file Kosong',
+                'namamateri.required' => 'Nama Kosong',
+                'deskripsi.required' => 'Deskripsi Kosong',
             ]
         );
-        DataMateri::create($request->all());
+
+        $path = $request->file('file')->store('public/uploads');
+
+        $user = new DataMateri();
+        $user->namamateri = $request['namamateri'];
+        $user->deskripsi = $request['deskripsi'];
+        $user->file = basename($path);
+        $user->save();
+
         return redirect()->route('dmateris.index')->with('success', 'Angkatan berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(DataMateri $dataMateri)
+    public function show(string $id)
     {
-        //
+        $datamateri = DataMateri::findOrFail($id);
+        return view('admin.materi.download', compact('datamateri'));
     }
 
     /**
@@ -81,9 +94,19 @@ class DataMateriController extends Controller
                 'deskripsi.required' => 'Deskripsi Kosong',
             ]
         );
-
+        if ($request->file('file')) {
+            if ($request->file_lama) {
+                storage::delete($request->file_lama);
+            }
+            $path = $request->file('file')->store('public/uploads');
+        } else {
+            $path = $request->file_lama;
+        }
         $DataMateri = DataMateri::find($id);
-        $DataMateri->update($request->all());
+        $DataMateri->namamateri = $request['namamateri'];
+        $DataMateri->deskripsi = $request['deskripsi'];
+        $DataMateri->file = basename($path);
+        $DataMateri->save();
         return redirect()->route('dmateris.index')->with('success', 'Angkatan berhasil ditambahkan');
     }
 

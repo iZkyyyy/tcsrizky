@@ -1,4 +1,7 @@
-@extends('layout.instruktur')
+@extends('layout.app')
+@section('title')
+ Angkatan
+@endsection
 @section('content')
     <div class="container">
         <div class="card">

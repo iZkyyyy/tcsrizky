@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class SoalSiswaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,8 +36,8 @@ class SoalSiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'materi_siswa_id' =>'required',
-            'kisikisi'=>'required',
+            'materi_siswa_id' => 'required',
+            'kisikisi' => 'required',
         ]);
 
         $Soalsiswa = new SoalSiswa;
@@ -42,15 +46,15 @@ class SoalSiswaController extends Controller
         $Soalsiswa->save();
 
         return redirect()->route('soals.index')->with('success', 'User berhasil ditambahkan');
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(SoalSiswa $soalSiswa)
+    public function show(string $id)
     {
-        //
+        $SoalSiswa = SoalSiswa::findOrFail($id);
+        return view('admin.soal.detail', compact('SoalSiswa'));
     }
 
     /**
@@ -69,9 +73,9 @@ class SoalSiswaController extends Controller
     public function update(Request $request, string $id)
     {
         $Soalsiswa = SoalSiswa::find($id);
-        $Soalsiswa->data_materi_id=$request ['materi_siswa_id'];
-        $Soalsiswa->kisikisi=$request ['kisikisi'];
-        $Soalsiswa -> save();
+        $Soalsiswa->data_materi_id = $request['materi_siswa_id'];
+        $Soalsiswa->kisikisi = $request['kisikisi'];
+        $Soalsiswa->save();
 
         return redirect()->route('soals.index')->with('success', 'User berhasil Diupdate');
     }
