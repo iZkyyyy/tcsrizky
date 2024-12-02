@@ -18,7 +18,7 @@
                 <p> PalComTech, adalah lembaga pendidikan generasi internet, berdiri sejak 2003, saat ini telah membantu
                     dan mendidik ribuan siswa mencapai kesuksesan dalam karier maupun usaha, dengan sistem belajar 100%
                     praktek 100% internet PalComTech menjamin setiap siswa dapat mempraktekan materi yang dipelajari
-                    secara langsung didepan komputer.PalComTech hingga saat ini telah memiliki 6 training center, 1
+                    secara langsung didepan komputer. PalComTech hingga saat ini telah memiliki 6 training center, 1
                     sekolah tinggi ilmu komputer dan 1 politeknik yang tersebar di 6 Cabang antara lain: Palembang, Opi,
                     Sako, Lahat, Prabumulih, dan Baturaja.</p>
                 <h3>Visi</h3>
@@ -130,7 +130,7 @@
     <section id="staff">
         <h2>Staff Palcomtech Opi Mall</h2>
         <div class="gallery-wrap">
-            <img src="https://cdn-icons-png.freepik.com/512/93/93634.png" id="backBtn">
+            <img src="https://cdn3.iconfinder.com/data/icons/user-interface-731/32/Left_Chevron-512.png" id="backBtn">
             <div class="gallery">
                 <div>
                     <span><img src="galeri/bapak ferlian.png"></span>

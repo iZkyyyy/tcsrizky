@@ -13,8 +13,8 @@
                         <label for="materi_siswa_id" class="form-label">Materi</label>
                         <select id="materi_siswa_id" name="materi_siswa_id" class="form-control"
                             value="{{ old('materi_siswa_id') }}">
+                            <option value="0">Pilih Materi</option>
                             @foreach ($DataMateri as $DM)
-                                <option value="0">Pilih Materi</option>
                                 <option value="{{ $DM->id }}">{{ $DM->namamateri }}</option>
                             @endforeach
                         </select>
