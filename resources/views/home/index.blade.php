@@ -105,22 +105,22 @@
         <h2><span>Galeri</span></h2>
         <div class="row">
             <div class="galeri-card">
-                <img src="galeri/desktop3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
+                <img src="galeri/image1.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
             </div>
             <div class="galeri-card">
-                <img src="galeri/desktop3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
+                <img src="galeri/image2.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
             </div>
             <div class="galeri-card">
-                <img src="galeri/desktop3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
+                <img src="galeri/image3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
             </div>
             <div class="galeri-card">
-                <img src="galeri/desktop3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
+                <img src="galeri/image4.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
             </div>
             <div class="galeri-card">
-                <img src="galeri/desktop3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
+                <img src="galeri/image5.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
             </div>
             <div class="galeri-card">
-                <img src="galeri/desktop3.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
+                <img src="galeri/image6.jpg" alt="--galeri 1 Tahun--" class="galeri-img">
             </div>
         </div>
     </section>
